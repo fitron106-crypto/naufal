@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Hidrolisis Garam Interaktif</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f8ff;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    h1, h2 {
+        text-align: center;
+    }
+    button {
+        padding: 10px;
+        margin-top: 10px;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #45a049;
+    }
+    .result {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+    footer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Hidrolisis Garam</h1>
+
+<h2>Data Siswa</h2>
+Nama: <input type="text" id="nama"><br><br>
+Kelas: <input type="text" id="kelas"><br><br>
+
+<h2>Pengertian</h2>
+<p>
+Hidrolisis garam adalah reaksi antara ion-ion garam dengan air yang menyebabkan perubahan pH larutan.
+Garam yang berasal dari asam kuat dan basa lemah atau sebaliknya dapat mengalami hidrolisis sehingga larutannya bersifat asam atau basa.
+</p>
+
+<h2>Soal</h2>
+
+<form id="quiz">
+
+<p>1. Garam yang mengalami hidrolisis adalah...</p>
+<input type="radio" name="q1" value="a"> NaCl<br>
+<input type="radio" name="q1" value="b"> NH4Cl<br>
+<input type="radio" name="q1" value="c"> KNO3<br>
+
+<p>2. NH4Cl bersifat...</p>
+<input type="radio" name="q2" value="a"> Basa<br>
+<input type="radio" name="q2" value="b"> Asam<br>
+<input type="radio" name="q2" value="c"> Netral<br>
+
+<p>3. Garam dari asam kuat dan basa kuat bersifat...</p>
+<input type="radio" name="q3" value="a"> Asam<br>
+<input type="radio" name="q3" value="b"> Basa<br>
+<input type="radio" name="q3" value="c"> Netral<br>
+
+<p>4. CH3COONa berasal dari...</p>
+<input type="radio" name="q4" value="a"> Asam kuat + basa kuat<br>
+<input type="radio" name="q4" value="b"> Asam lemah + basa kuat<br>
+<input type="radio" name="q4" value="c"> Asam kuat + basa lemah<br>
+
+<p>5. Larutan CH3COONa bersifat...</p>
+<input type="radio" name="q5" value="a"> Asam<br>
+<input type="radio" name="q5" value="b"> Basa<br>
+<input type="radio" name="q5" value="c"> Netral<br>
+
+<button type="button" onclick="hitungNilai()">Kumpulkan Jawaban</button>
+
+</form>
+
+<div class="result" id="hasil"></div>
+
+<footer>
+👨🏻‍🎓Dibuat oleh: Naufal Hisyam Kelas XI-2 <br>
+👩🏻‍🏫 Tugas : Bu Fitri
+</footer>
+
+</div>
+
+<script>
+function hitungNilai() {
+    let jawaban = {
+        q1: "b",
+        q2: "b",
+        q3: "c",
+        q4: "b",
+        q5: "b"
+    };
+
+    let skor = 0;
+    let total = 5;
+
+    for (let i = 1; i <= total; i++) {
+        let soal = document.querySelector('input[name="q'+i+'"]:checked');
+        if (soal && soal.value === jawaban['q'+i]) {
+            skor++;
+        }
+    }
+
+    let nilai = skor * 20;
+
+    let nama = document.getElementById("nama").value;
+    let kelas = document.getElementById("kelas").value;
+
+    document.getElementById("hasil").innerHTML =
+        "Nama: " + nama + "<br>" +
+        "Kelas: " + kelas + "<br>" +
+        "Skor: " + skor + " dari 5<br>" +
+        "Nilai: " + nilai;
+}
+</script>
+
+</body>
+</html>
